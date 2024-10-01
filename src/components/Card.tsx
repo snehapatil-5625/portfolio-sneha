@@ -26,8 +26,12 @@ export function Card<T extends React.ElementType = 'div'>({
 
   return (
     <Component
-      className={clsx(className, 'group relative flex flex-col items-start')}
+      className={clsx(
+        className,
+        'group relative flex flex-col items-start hover:cursor-pointer',
+      )}
     >
+      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800/50"></div>
       {children}
     </Component>
   )
@@ -59,7 +63,7 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
   let Component = as ?? 'h2'
 
   return (
-    <Component className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+    <Component className="z-10 text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   )

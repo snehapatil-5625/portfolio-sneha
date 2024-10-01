@@ -4,27 +4,27 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 
-function Article({ article }: { article: ArticleWithSlug }) {
+function Education({ education }: { education: ArticleWithSlug }) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="mb-4 md:col-span-3">
-        <Card.Title>{article.title}</Card.Title>
+        <Card.Title>{education.title}</Card.Title>
         <Card.Eyebrow
           as="time"
-          dateTime={article.date}
+          dateTime={education.date}
           className="md:hidden"
           decorate
         >
-          {article.date}
+          {education.date}
         </Card.Eyebrow>
-        <Card.Description>{article.description}</Card.Description>
+        <Card.Description>{education.description}</Card.Description>
       </Card>
       <Card.Eyebrow
         as="time"
-        dateTime={article.date}
+        dateTime={education.date}
         className="mt-1 hidden md:block"
       >
-        {article.date}
+        {education.date}
       </Card.Eyebrow>
     </article>
   )
@@ -33,7 +33,7 @@ function Article({ article }: { article: ArticleWithSlug }) {
 export const metadata: Metadata = {
   title: 'Education',
   description:
-    'All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order.',
+    'A journey through my academic achievements in science and technology, shaping my path to software development.',
 }
 
 export default async function ArticlesIndex() {
@@ -41,13 +41,13 @@ export default async function ArticlesIndex() {
 
   return (
     <SimpleLayout
-      title="Writing on software design, company building, and the aerospace industry."
-      intro="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
+      title="From academic excellence to a career in software development."
+      intro="A journey through my academic achievements in science and technology, shaping my path to software development."
     >
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
         <div className="flex max-w-3xl flex-col space-y-16">
           {articles.map((article) => (
-            <Article key={article.slug} article={article} />
+            <Education key={article.slug} education={article} />
           ))}
         </div>
       </div>
